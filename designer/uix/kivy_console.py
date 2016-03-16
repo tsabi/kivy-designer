@@ -730,8 +730,8 @@ class KivyConsole(GridLayout):
                     else:
                         self.cur_dir = os.getcwdu()
                 except OSError as err:
-                    Logger.debug('Shell Console: err:' + err.strerror +
-                                 ' directory:' + command[3:])
+                    Logger.debug(u'Shell Console: err:' + unicode(err.strerror, errors='replace') +
+                                 u' directory:' + command[3:])
                     add_to_cache(''.join((err.strerror, '\n')))
             txtinput_command_line.text = self.prompt()
             self.txtinput_command_line_refocus = True
