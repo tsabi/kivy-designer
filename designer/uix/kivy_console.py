@@ -721,10 +721,10 @@ class KivyConsole(GridLayout):
             else:
                 try:
                     command = re.sub('[ ]+', ' ', command)
-                    if command[3] == os.sep:
+                    if os.path.isdir(command[3]):
                         os.chdir(command[3:])
                     else:
-                        os.chdir(self.cur_dir + os.sep + command[3:])
+                        os.chdir(os.path.join(self.cur_dir, command[3:]))
                     if sys.version_info >= (3, 0):
                         self.cur_dir = os.getcwd()
                     else:
